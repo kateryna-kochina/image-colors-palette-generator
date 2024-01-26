@@ -9,53 +9,67 @@
             href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
         />
         <!-- <link rel="stylesheet" href="static/css/styles.css" /> -->
-        <!-- <script defer src="static/scripts/scripts.js"></script> -->
+        <script
+            defer
+            src="{{ url_for('static', filename='scripts/scripts.js') }}"
+        ></script>
     </head>
     <body>
         <section class="section is-primary has-text-centered">
+
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column is-8">
                         <h1 class="title">Image Color Palette Generator</h1>
                         <div class="image-wrapper">
-                            <img
-                                alt="default-image"
-                                src="{{ url_for('static', filename='/assets/img/default-image.jpg') }}"
-                            />
+                            <img alt="image" src="{{ url_for('static', filename=img_path) }}" />
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-8">
-                        <div
-                            class="file has-name is-centered is-dark is-fullwidth"
-                        >
-                            <label class="file-label">
-                                <input
-                                    class="file-input"
-                                    type="file"
-                                    name="resume"
-                                />
-                                <span class="file-cta">
-                                    <span class="file-label">
-                                        Choose a File
-                                    </span>
-                                </span>
-                                <span class="file-name"> No File Chosen </span>
-                            </label>
-                            <button
-                                class="button is-dark is-normal is-onethird"
-                                action="{{ url_for('main.home') }}"
-                                method="post"
+                <form
+                    method="post"
+                    action="{{ url_for('main.home') }}"
+                    enctype="multipart/form-data"
+                >
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div
+                                class="file has-name is-centered is-dark is-fullwidth"
                             >
-                                Submit
-                            </button>
+                                <label class="file-label">
+                                    <input
+                                        class="file-input"
+                                        type="file"
+                                        name="image"
+                                        accept="image/*"
+                                        onchange="displayImageName(this)"
+                                    />
+
+                                    <span class="file-cta">
+                                        <span class="file-label">
+                                            Choose an Image
+                                        </span>
+                                    </span>
+                                    <span
+                                        class="file-name"
+                                        id="selectedFileName"
+                                    >
+                                        No File Chosen
+                                    </span>
+                                </label>
+
+                                <button
+                                    class="button is-dark is-normal is-onethird"
+                                >
+                                    Submit
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <div class="container">

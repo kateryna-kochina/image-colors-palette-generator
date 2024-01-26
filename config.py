@@ -1,3 +1,3 @@
 class Config:
 
-    DEFAULT_IMG_PATH = 'app/static/assets/img/default-image.jpg'
+    DEFAULT_IMG_PATH = 'assets/img/default-image.jpg'
