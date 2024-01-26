@@ -13,7 +13,6 @@
     </head>
     <body>
         <section class="section is-primary has-text-centered">
-
             <div class="container">
                 <div class="columns is-centered">
                     <div class="column is-8">
@@ -63,16 +62,34 @@
                 <div class="columns is-centered">
                     <div class="column is-8">
                         <br />
-                        <h2 class="subtitle">
-                            Top 10 Most Common Colors
-                        </h2>
-                        {% for color, count in top_colors %}
-                        <li>{{ color }} - {{ count }} occurrences</li>
-                        {% endfor %}
+                        <h2 class="subtitle">Top 10 Most Common Colors</h2>
+
+                        <table class="table is-fullwidth is-narrow is-centered">
+                            <thead>
+                                <tr>
+                                    <td><strong>Color</strong></td>
+                                    <td><strong>Color Code</strong></td>
+                                    <td><strong>Percent</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for color, count in top_colors %}
+                                <tr>
+                                    <td>
+                                        <div
+                                            class="box"
+                                            style="background-color: {{ color }}"
+                                        ></div>
+                                    </td>
+                                    <td>{{ color }}</td>
+                                    <td>{{ count }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-
         </section>
     </body>
 </html>
