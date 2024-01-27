@@ -5,13 +5,31 @@ from PIL import Image
 
 
 def rgb_to_hex(rgb):
-    # Convert RGB to hexadecimal
-    hex_color = "#{:02x}{:02x}{:02x}".format(*rgb)
+    '''
+    Convert RGB values to hexadecimal representation.
 
+    Args:
+        rgb (tuple): A tuple containing three integers representing the Red, Green, and Blue values.
+
+    Returns:
+        str: Hexadecimal representation of the RGB values.
+    '''
+    hex_color = "#{:02x}{:02x}{:02x}".format(*rgb)
     return hex_color
 
 
 def get_top_colors(image_path, num_colors=10):
+    '''
+    Get the top N colors in an image based on their occurrence percentages.
+
+    Args:
+        image_path (str): The path to the image file.
+        num_colors (int, optional): The number of top colors to retrieve. Defaults to 10.
+
+    Returns:
+        list: A list of tuples containing the top N colors and their occurrence percentages.
+              Each tuple has the format (hex_color, percentage).
+    '''
     try:
         # Check if the file exists
         if not os.path.isfile(image_path):

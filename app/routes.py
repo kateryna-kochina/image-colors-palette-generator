@@ -5,6 +5,12 @@ from .logic import get_top_colors
 
 
 def create_app():
+    '''
+    Create and configure the Flask application.
+
+    Returns:
+        Flask: The configured Flask application instance.
+    '''
     app = Flask(__name__)
 
     # Register the main blueprint
@@ -19,6 +25,12 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/', methods=['POST', 'GET'])
 def home():
+    '''
+    Handle requests to the home route ('/').
+
+    Returns:
+        str: Rendered HTML template with top colors and image path.
+    '''
     if request.method == 'POST':
         try:
             # Handle file upload
@@ -40,6 +52,7 @@ def home():
         except KeyError:
             print("KeyError: 'image' not found in request.files")
 
+    # Default image path and top colors for initial rendering
     img_path = Config.DEFAULT_IMG_PATH
     top_colors = get_top_colors(f'app/static/{img_path}')
 
